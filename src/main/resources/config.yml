@@ -1,0 +1,310 @@
+﻿# Punish Plugin Konfiguration
+prefix: "&8[&4&lPUNISH&8] &7"
+discord: "https://discord.gg/96cJ9jQYJ4"
+# Sprache / Language: "de" (Deutsch) oder "en" (English)
+language: "en"
+
+# Ban Presets: Kuerzel -> Anzeigename + Standard-Dauer
+# Dauer-Format: Xd (Tage), Xh (Stunden), Xm (Minuten), -1 (permanent)
+ban-presets:
+  RA:
+    display: "Rassismus"
+    duration: "-1"
+  HR:
+    display: "Hassrede"
+    duration: "4d"
+  WR:
+    display: "Werbung"
+    duration: "1d"
+  SP:
+    display: "Spam"
+    duration: "1d"
+  TX:
+    display: "Toxisch"
+    duration: "2d"
+  schwerhacking:
+    display: "Hacking (schwer)"
+    duration: "-1"
+  mittel_hacking:
+    display: "Hacking (mittel)"
+    duration: "7d"
+  leicht_hacking:
+    display: "Hacking (leicht)"
+    duration: "3d"
+  illegal_leicht:
+    display: "Illegale Mods/RP (leicht)"
+    duration: "36h"
+  illegal_normal:
+    display: "Illegale Mods/RP (normal)"
+    duration: "7d"
+
+# Mute Presets
+mute-presets:
+  HR:
+    display: "Hassrede"
+    duration: "4d"
+  WR:
+    display: "Werbung"
+    duration: "1d"
+  SP:
+    display: "Spam"
+    duration: "1d"
+  TX:
+    display: "Toxisch"
+    duration: "2d"
+
+# Woerter im Ban-Grund die automatisch PERMANENT erzwingen
+permanent-keywords:
+  - "N Wort"
+
+# Chat-Filter: Kategorie -> Liste von Trigger-Woertern (case insensitive)
+# Cooldown in Sekunden zwischen Filter-Benachrichtigungen pro Spieler
+filter-cooldown-seconds: 5
+
+# Anzahl Verwarnungen in 24h bevor Auto-Ban greift
+auto-ban-threshold: 3
+
+filter:
+  RA:
+    - "nige"
+    - "nigger"
+    - "nega"
+    - "niger"
+    - "neger"
+    - "negr"
+    - "kanake"
+    - "kanack"
+    - "zigeuner"
+    - "zigeun"
+    - "scheiß ausländer"
+    - "scheiss auslaender"
+    - "affe"
+    - "bimbo"
+    - "kameltreiber"
+    - "schlitzauge"
+  HR:
+    - "hurensohn"
+    - "hure"
+    - "bastard"
+    - "fick"
+    - "ficken"
+    - "ficker"
+    - "wichser"
+    - "wixer"
+    - "wixxer"
+    - "missgeburt"
+    - "misgeburt"
+    - "misstgeburt"
+    - "behindert"
+    - "mongo"
+    - "spast"
+    - "spasti"
+    - "krepier"
+    - "drecksau"
+    - "schlampe"
+    - "fotze"
+    - "nutte"
+    - "arschloch"
+    - "arschl"
+    - "schwuchtel"
+    - "opfer"
+    - "huan"
+    - "amk"
+    - "anasinin"
+    - "orospu"
+    - "siktir"
+    - "deine mutter"
+    - "deine mudda"
+    - "deine mutte"
+    - "hwsn"
+    - "hsn"
+  WR:
+    - "discord.gg/"
+    - ".gg/"
+    - "bit.ly/"
+    - "tinyurl"
+    - " twitch "
+    - " live"
+  SP: []
+  TX:
+    - "toten"
+    - "stirbst"
+    - "sterben"
+    - "kys"
+    - "kill yourself"
+    - "bring dich um"
+    - "du sollst sterben"
+    - "geh sterben"
+    - "vergasen"
+    - "holocaust"
+    - "heil hitler"
+    - "sieg heil"
+
+# =============================================================
+# Nachrichten / Messages
+# Platzhalter: {player}, {reason}, {time}, {discord}, {preset},
+#              {by}, {uuid}, {entry}, {name}, {lang}, {suffix}
+# =============================================================
+messages:
+  de:
+    general:
+      player-not-found: "&cSpieler nicht gefunden."
+      player-not-found-joined: "&cSpieler nicht gefunden. Muss mindestens einmal online gewesen sein."
+      separator: "&8&m------------------------------"
+      offline-suffix: " &8(offline)"
+    ban:
+      usage: "&cNutzung: /ban <spieler> <preset> [dauer] [grund...]"
+      usage-presets: "&7Presets: &fRA, HR, WR, SP, TX, schwerhacking, mittel_hacking, leicht_hacking, illegal_leicht, illegal_normal"
+      unknown-preset: "&cUnbekannter Preset: &e{preset}"
+      success: "&aCreated Ban!"
+      broadcast-perm: "&4{player} &7wurde &4permanent &7gebannt.{suffix}"
+      broadcast-temp: "&c{player} &7wurde fuer &e{time} &7gebannt.{suffix}"
+      kick-perm: "&4Du wurdest permanent gebannt!\n&6Grund: &e{reason}\n\n&7Ticket: &b{discord}"
+      kick-temp: "&cDu wurdest fuer &e{time} &cgebannt!\n&6Grund: &e{reason}\n\n&7Ticket: &b{discord}"
+    unban:
+      usage: "&cNutzung: /unban <spieler>"
+      not-banned: "&c{player} ist nicht gebannt."
+      success: "&a{player} wurde entbannt."
+    mute:
+      usage: "&cNutzung: /mute <spieler> <preset> [dauer] [grund...]"
+      usage-presets: "&7Presets: &fHR, WR, SP, TX"
+      unknown-preset: "&cUnbekannter Preset: &e{preset}"
+      success: "&aCreated Mute!"
+      notify-target: "&cDu wurdest gemutet. &7Grund: &f{reason}"
+    unmute:
+      usage: "&cNutzung: /unmute <spieler>"
+      not-muted: "&c{player} ist nicht gemutet."
+      success: "&a{player} wurde entmutet."
+    playerinfo:
+      usage: "&cNutzung: /playerinfo <spieler>"
+      header: "&fInfo: &e{player}"
+      uuid: "&7UUID: &f{uuid}"
+      first-login: "&7Erster Login: &f{time}"
+      last-login: "&7Letzter Login: &f{time}"
+      ban-active: "&cBan: &fAKTIV"
+      ban-none: "&aBan: &fNein"
+      ban-reason: "&7- Grund: &f{reason}"
+      ban-by: "&7- Von: &f{by}"
+      ban-perm: "&7- Dauer: &fPERMANENT"
+      ban-time-left: "&7- Rest: &f{time}"
+      mute-active: "&6Mute: &fAKTIV"
+      mute-none: "&aMute: &fNein"
+      mute-reason: "&7- Grund: &f{reason}"
+      mute-by: "&7- Von: &f{by}"
+      mute-time-left: "&7- Rest: &f{time}"
+      alts-header: "&bAlt Accounts (gleiche IP):"
+      alts-none: "&7- &8Keine"
+      alt-entry: "&7- &f{name}"
+      last-ban-entry: "&cLetzter Ban: &f{entry}"
+      last-ban-none: "&cLetzter Ban: &8Keiner"
+      last-mute-entry: "&6Letzter Mute: &f{entry}"
+      last-mute-none: "&6Letzter Mute: &8Keiner"
+    banlogs:
+      usage: "&cNutzung: /banlogs <spieler>"
+      header: "&fLogs: &e{player}"
+      ban-history-header: "&cBan History (letzte 10):"
+      ban-history-none: "&8- Keine"
+      ban-entry: "&8- &f{entry}"
+      mute-history-header: "&6Mute History (letzte 10):"
+      mute-history-none: "&8- Keine"
+      mute-entry: "&8- &f{entry}"
+    join:
+      ban-kick-perm: "&4Du wurdest permanent gebannt!\n&6Grund: &e{reason}\n\n&7Wenn du nicht einverstanden bist, oeffne ein Ticket bei:\n&b{discord}"
+      ban-kick-temp: "&cDu wurdest gebannt!\n&6Grund: &e{reason}\n&bVerbleibende Zeit: &e{time}\n\n&7Wenn du nicht einverstanden bist, oeffne ein Ticket bei:\n&b{discord}"
+    chat:
+      muted: "&cDu bist gemutet. &7Grund: &f{reason} &8| &b{discord}"
+      notify-line1: "&8[&eChat&8] &e{player}&7: &f{message}"
+      notify-line2-prefix: "&8[&eChat&8] &c{category} "
+      notify-ban-hover: "Klicke um zu bannen"
+      notify-mute-hover: "Klicke um zu muten"
+      auto-ban-notify: "&aCreated Ban! &8(Auto) &c{player}"
+      auto-ban-kick-perm: "&4Du wurdest permanent gebannt!\n&6Grund: &e{reason}\n\n&7Ticket: &b{discord}"
+      auto-ban-kick-temp: "&cDu wurdest gebannt!\n&6Grund: &e{reason}\n\n&7Ticket: &b{discord}"
+    admin:
+      no-permission: "&cDu hast keine Berechtigung."
+      usage: "&cNutzung: /punish <reload|lang>"
+      reload-success: "&aKonfiguration wurde neu geladen."
+      lang-usage: "&cNutzung: /punish lang <de|en>"
+      lang-invalid: "&cUngueltige Sprache. Nutze: &ede &7oder &een"
+      lang-success: "&aSprache wurde auf &e{lang} &agesetzt."
+  en:
+    general:
+      player-not-found: "&cPlayer not found."
+      player-not-found-joined: "&cPlayer not found. They must have joined at least once."
+      separator: "&8&m------------------------------"
+      offline-suffix: " &8(offline)"
+    ban:
+      usage: "&cUsage: /ban <player> <preset> [duration] [reason...]"
+      usage-presets: "&7Presets: &fRA, HR, WR, SP, TX, schwerhacking, mittel_hacking, leicht_hacking, illegal_leicht, illegal_normal"
+      unknown-preset: "&cUnknown preset: &e{preset}"
+      success: "&aCreated Ban!"
+      broadcast-perm: "&4{player} &7has been &4permanently &7banned.{suffix}"
+      broadcast-temp: "&c{player} &7has been banned for &e{time}.{suffix}"
+      kick-perm: "&4You have been permanently banned!\n&6Reason: &e{reason}\n\n&7Appeal: &b{discord}"
+      kick-temp: "&cYou have been banned for &e{time}&c!\n&6Reason: &e{reason}\n\n&7Appeal: &b{discord}"
+    unban:
+      usage: "&cUsage: /unban <player>"
+      not-banned: "&c{player} is not banned."
+      success: "&a{player} has been unbanned."
+    mute:
+      usage: "&cUsage: /mute <player> <preset> [duration] [reason...]"
+      usage-presets: "&7Presets: &fHR, WR, SP, TX"
+      unknown-preset: "&cUnknown preset: &e{preset}"
+      success: "&aCreated Mute!"
+      notify-target: "&cYou have been muted. &7Reason: &f{reason}"
+    unmute:
+      usage: "&cUsage: /unmute <player>"
+      not-muted: "&c{player} is not muted."
+      success: "&a{player} has been unmuted."
+    playerinfo:
+      usage: "&cUsage: /playerinfo <player>"
+      header: "&fInfo: &e{player}"
+      uuid: "&7UUID: &f{uuid}"
+      first-login: "&7First Login: &f{time}"
+      last-login: "&7Last Login: &f{time}"
+      ban-active: "&cBan: &fACTIVE"
+      ban-none: "&aBan: &fNo"
+      ban-reason: "&7- Reason: &f{reason}"
+      ban-by: "&7- By: &f{by}"
+      ban-perm: "&7- Duration: &fPERMANENT"
+      ban-time-left: "&7- Remaining: &f{time}"
+      mute-active: "&6Mute: &fACTIVE"
+      mute-none: "&aMute: &fNo"
+      mute-reason: "&7- Reason: &f{reason}"
+      mute-by: "&7- By: &f{by}"
+      mute-time-left: "&7- Remaining: &f{time}"
+      alts-header: "&bAlt Accounts (same IP):"
+      alts-none: "&7- &8None"
+      alt-entry: "&7- &f{name}"
+      last-ban-entry: "&cLast Ban: &f{entry}"
+      last-ban-none: "&cLast Ban: &8None"
+      last-mute-entry: "&6Last Mute: &f{entry}"
+      last-mute-none: "&6Last Mute: &8None"
+    banlogs:
+      usage: "&cUsage: /banlogs <player>"
+      header: "&fLogs: &e{player}"
+      ban-history-header: "&cBan History (last 10):"
+      ban-history-none: "&8- None"
+      ban-entry: "&8- &f{entry}"
+      mute-history-header: "&6Mute History (last 10):"
+      mute-history-none: "&8- None"
+      mute-entry: "&8- &f{entry}"
+    join:
+      ban-kick-perm: "&4You have been permanently banned!\n&6Reason: &e{reason}\n\n&7If you disagree, open a ticket at:\n&b{discord}"
+      ban-kick-temp: "&cYou have been banned!\n&6Reason: &e{reason}\n&bTime left: &e{time}\n\n&7If you disagree, open a ticket at:\n&b{discord}"
+    chat:
+      muted: "&cYou are muted. &7Reason: &f{reason} &8| &b{discord}"
+      notify-line1: "&8[&eChat&8] &e{player}&7: &f{message}"
+      notify-line2-prefix: "&8[&eChat&8] &c{category} "
+      notify-ban-hover: "Click to ban"
+      notify-mute-hover: "Click to mute"
+      auto-ban-notify: "&aCreated Ban! &8(Auto) &c{player}"
+      auto-ban-kick-perm: "&4You have been permanently banned!\n&6Reason: &e{reason}\n\n&7Appeal: &b{discord}"
+      auto-ban-kick-temp: "&cYou have been banned!\n&6Reason: &e{reason}\n\n&7Appeal: &b{discord}"
+    admin:
+      no-permission: "&cYou don't have permission."
+      usage: "&cUsage: /punish <reload|lang>"
+      reload-success: "&aConfiguration reloaded successfully."
+      lang-usage: "&cUsage: /punish lang <de|en>"
+      lang-invalid: "&cInvalid language. Use: &ede &7or &een"
+      lang-success: "&aLanguage set to &e{lang}&a."

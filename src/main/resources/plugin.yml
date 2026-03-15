@@ -1,0 +1,48 @@
+name: Punish
+version: ${version}
+main: de.joris.punish.Punish
+api-version: '1.21'
+description: Punishment plugin for Paper servers
+
+commands:
+  ban:
+    description: Banne einen Spieler
+    usage: /ban <spieler> <preset> [dauer] [grund...]
+  unban:
+    description: Entbanne einen Spieler
+    usage: /unban <spieler>
+  mute:
+    description: Mute einen Spieler
+    usage: /mute <spieler> <preset> [dauer] [grund...]
+  unmute:
+    description: Entmute einen Spieler
+    usage: /unmute <spieler>
+  playerinfo:
+    description: Zeige Spieler-Informationen
+    usage: /playerinfo <spieler>
+  banlogs:
+    description: Zeige Ban/Mute History
+    usage: /banlogs <spieler>
+  punish:
+    description: Punish Admin Befehle (reload, lang)
+    usage: /punish <reload|lang>
+
+permissions:
+  punish.ban:
+    description: Erlaubt das Bannen/Entbannen von Spielern
+    default: op
+  punish.mute:
+    description: Erlaubt das Muten/Entmuten von Spielern
+    default: op
+  punish.info:
+    description: Erlaubt das Anzeigen von Spieler-Informationen
+    default: op
+  punish.logs:
+    description: Erlaubt das Anzeigen von Ban/Mute Logs
+    default: op
+  punish.notify:
+    description: Empfaengt Chat-Filter Benachrichtigungen
+    default: op
+  punish.admin:
+    description: Erlaubt /punish reload und /punish lang
+    default: op
